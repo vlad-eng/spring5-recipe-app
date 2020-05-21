@@ -56,13 +56,13 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         UnitOfMeasure tableSpoonUom = getUnitOfMeasure("Tablespoon");
         UnitOfMeasure poundUom = getUnitOfMeasure("Pound");
 
-        Ingredient avocado = new Ingredient("avocado", new BigDecimal(2), avocadoUom, guacamole);
+        Ingredient avocado = new Ingredient("avocado", new BigDecimal(2), avocadoUom);
         guacamole.addIngredient(avocado);
 
-        Ingredient salt = new Ingredient("salt", new BigDecimal(0.25), teaspoonUom, guacamole);
+        Ingredient salt = new Ingredient("salt", new BigDecimal(0.25), teaspoonUom);
         guacamole.addIngredient(salt);
 
-        Ingredient limeJuice = new Ingredient("lime juice", new BigDecimal(1), tableSpoonUom, guacamole);
+        Ingredient limeJuice = new Ingredient("lime juice", new BigDecimal(1), tableSpoonUom);
         guacamole.addIngredient(limeJuice);
 
         recipes.add(guacamole);
@@ -78,10 +78,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                         "5. Assemble the tacos\n"
         );
 
-        Ingredient orangeJuice = new Ingredient("orange juice", new BigDecimal(3), tableSpoonUom, chickenTacos);
+        Ingredient orangeJuice = new Ingredient("orange juice", new BigDecimal(3), tableSpoonUom);
         chickenTacos.addIngredient(orangeJuice);
 
-        Ingredient chickenThighs = new Ingredient("chicken thighs", new BigDecimal(1.25), poundUom, chickenTacos);
+        Ingredient chickenThighs = new Ingredient("chicken thighs", new BigDecimal(1.25), poundUom);
         chickenTacos.addIngredient(chickenThighs);
 
         recipes.add(chickenTacos);
