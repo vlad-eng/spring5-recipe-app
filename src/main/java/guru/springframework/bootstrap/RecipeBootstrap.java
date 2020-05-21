@@ -10,7 +10,9 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
@@ -54,17 +56,15 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         UnitOfMeasure tableSpoonUom = getUnitOfMeasure("Tablespoon");
         UnitOfMeasure poundUom = getUnitOfMeasure("Pound");
 
-        Set<Ingredient> guacamoleIngredients = new HashSet<>();
         Ingredient avocado = new Ingredient("avocado", new BigDecimal(2), avocadoUom, guacamole);
-        guacamoleIngredients.add(avocado);
+        guacamole.addIngredient(avocado);
 
         Ingredient salt = new Ingredient("salt", new BigDecimal(0.25), teaspoonUom, guacamole);
-        guacamoleIngredients.add(salt);
+        guacamole.addIngredient(salt);
 
         Ingredient limeJuice = new Ingredient("lime juice", new BigDecimal(1), tableSpoonUom, guacamole);
-        guacamoleIngredients.add(limeJuice);
+        guacamole.addIngredient(limeJuice);
 
-        guacamole.setIngredients(guacamoleIngredients);
         recipes.add(guacamole);
 
         Recipe chickenTacos = new Recipe();
@@ -78,15 +78,12 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                         "5. Assemble the tacos\n"
         );
 
-        Set<Ingredient> chickenTacosIngredients = new HashSet<>();
-
         Ingredient orangeJuice = new Ingredient("orange juice", new BigDecimal(3), tableSpoonUom, chickenTacos);
-        chickenTacosIngredients.add(orangeJuice);
+        chickenTacos.addIngredient(orangeJuice);
 
         Ingredient chickenThighs = new Ingredient("chicken thighs", new BigDecimal(1.25), poundUom, chickenTacos);
-        chickenTacosIngredients.add(chickenThighs);
+        chickenTacos.addIngredient(chickenThighs);
 
-        chickenTacos.setIngredients(chickenTacosIngredients);
         recipes.add(chickenTacos);
 
         return recipes;
