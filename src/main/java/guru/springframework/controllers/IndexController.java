@@ -33,8 +33,6 @@ public class IndexController {
         System.out.println("Cat ID is: " + categoryOptional.get().getId());
         System.out.println("UOM ID is: " + unitOfMeasureOptional.get().getId());
 
-        recipeService.findAll();
-
         return "index";
     }
 

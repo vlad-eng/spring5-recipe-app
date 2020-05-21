@@ -20,7 +20,7 @@ public class RecipeJpaService implements RecipeService {
     @Override
     public Set<Recipe> findAll() {
         Set<Recipe> recipes = new HashSet<>();
-        recipeRepository.findAll().forEach(recipe -> recipes.add(recipe));
+        recipeRepository.findAll().forEach(recipes::add);
         return recipes;
     }
 

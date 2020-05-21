@@ -3,8 +3,8 @@ package guru.springframework.bootstrap;
 import guru.springframework.domain.Ingredient;
 import guru.springframework.domain.Recipe;
 import guru.springframework.domain.UnitOfMeasure;
+import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
-import guru.springframework.services.RecipeService;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -15,17 +15,17 @@ import java.util.*;
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-    private final RecipeService recipeService;
+    private final RecipeRepository recipeRepository;
     private final UnitOfMeasureRepository uomRepository;
 
-    public RecipeBootstrap(RecipeService recipeService, UnitOfMeasureRepository uomRepository) {
-        this.recipeService = recipeService;
+    public RecipeBootstrap(RecipeRepository recipeRepository, UnitOfMeasureRepository uomRepository) {
+        this.recipeRepository = recipeRepository;
         this.uomRepository = uomRepository;
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        recipeService.saveAll(getRecipes());
+        recipeRepository.saveAll(getRecipes());
     }
 
     private UnitOfMeasure getUnitOfMeasure(String uomDescription) throws RuntimeException {
