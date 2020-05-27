@@ -3,11 +3,13 @@ package guru.springframework.services.jpa;
 import guru.springframework.domain.Recipe;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.services.RecipeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @Service
 public class RecipeJpaService implements RecipeService {
 
@@ -19,6 +21,7 @@ public class RecipeJpaService implements RecipeService {
 
     @Override
     public Set<Recipe> findAll() {
+        log.debug("In the Recipe service");
         Set<Recipe> recipes = new HashSet<>();
         recipeRepository.findAll().forEach(recipes::add);
         return recipes;
